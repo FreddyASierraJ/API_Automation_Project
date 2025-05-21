@@ -7,6 +7,8 @@ import io.restassured.response.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
+
 public class APIBase {
 
     private static final Logger log= LoggerFactory.getLogger(APIBase.class);
@@ -31,6 +33,15 @@ public class APIBase {
 
         return response;
     }
+    public Response uploadFile(String endpoint, File file){
+
+        Response response = given().contentType("multipart/form-data")
+                .accept("application/json")
+                .multiPart("file",file)
+                .log().all()
+                .post(baseUrl+endpoint);
+        return response;
+    }
     public Response post_no_Logs(String endpoint, Object body){
         Response response=given().contentType(ContentType.JSON).body(body)
                 .when().post(baseUrl+endpoint);
@@ -53,4 +64,6 @@ public class APIBase {
 
         return response;
     }
+
+
 }
