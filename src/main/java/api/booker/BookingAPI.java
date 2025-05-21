@@ -58,7 +58,7 @@ public class BookingAPI extends APIBase {
 
         Map<String,Object> body = new HashMap<>();
         body.put("firstname",booking.getFirstname());
-        body.put("lasttname",booking.getLastname());
+        body.put("lastname",booking.getLastname());
         body.put("totalprice",booking.getTotalprice());
         body.put("depositpaid",booking.isDepositpaid());
         body.put("bookingdates",bookingDates);
@@ -75,13 +75,30 @@ public class BookingAPI extends APIBase {
 
         Map<String,Object> body = new HashMap<>();
         body.put("firstname",booking.getFirstname());
-        body.put("lasttname",booking.getLastname());
+        body.put("lastname",booking.getLastname());
         body.put("totalprice",booking.getTotalprice());
         body.put("depositpaid",booking.isDepositpaid());
         body.put("bookingdates",bookingDates);
         body.put("addtionalneeds",booking.getAdditionalneeds());
 
         return put(BOOKING_ENDPOINT+"/"+bookingId,body,token);
+
+    }
+    public Response updateBooking(int bookingId, Booking booking, String _token){
+
+        Map<String,Object> bookingDates = new HashMap<>();
+        bookingDates.put("checkin",booking.getCheckin());
+        bookingDates.put("checkout",booking.getCheckout());
+
+        Map<String,Object> body = new HashMap<>();
+        body.put("firstname",booking.getFirstname());
+        body.put("lastname",booking.getLastname());
+        body.put("totalprice",booking.getTotalprice());
+        body.put("depositpaid",booking.isDepositpaid());
+        body.put("bookingdates",bookingDates);
+        body.put("addtionalneeds",booking.getAdditionalneeds());
+
+        return put(BOOKING_ENDPOINT+"/"+bookingId,body,_token);
 
     }
     public Response deleteBooking(int bookingId){
