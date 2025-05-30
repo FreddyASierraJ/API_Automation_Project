@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import pojo.Booking;
 
 @ExtendWith(ExtentReportExtension.class)
+@Tag("Booking_Regression")
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class BookingTest {

@@ -5,6 +5,7 @@ import io.restassured.response.Response;
 import listeners.ExtentReportExtension;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.slf4j.Logger;
@@ -12,7 +13,7 @@ import org.slf4j.LoggerFactory;
 import pojo.Booking;
 
 @ExtendWith(ExtentReportExtension.class)
-
+@Tag("Booking_Regression")
 public class BookingNegativeTests {
     private static final Logger log= LoggerFactory.getLogger(BookingNegativeTests.class);
 
