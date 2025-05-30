@@ -15,7 +15,17 @@ pipeline {
 
         stage('Build & Test') {
             steps {
-                bat '"mvn clean test -Dgroups="Booking_Regression"'
+            script {
+                withCredentials([usernamePassword(
+                                credentialsId: 'booker-credentials',
+                                usernameVariable: 'BOOKER_USER',
+                                passwordVariable: 'BOOKER_PASSWORD'
+                            )]){
+                                    bat 'mvn clean test -Dgroups="PetStore_Regression,Booking_Regression"'
+                            }
+            }
+
+
             }
         }
     }
